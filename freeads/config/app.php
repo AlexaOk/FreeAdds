@@ -151,6 +151,7 @@ return [
          * Package Service Providers...
          */
          Collective\Html\HtmlServiceProvider::class,
+             Cmgmyr\Messenger\MessengerServiceProvider::class,
         /*
          * Application Service Providers...
          */

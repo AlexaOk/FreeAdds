@@ -50,7 +50,12 @@ class AnnoncesController extends Controller
       'user_id' => $user_id,
       'titre' => $request->titre,
       'description' => $request->description,
-      'prix'=> $request->prix]);
+      'prix'=> $request->prix,
+      'catégorie'=> $request->catégorie,
+      'couleur' => $request->couleur,
+      'taille' => $request->taille,
+      'tags' => $request->tags,
+      ]);
 
       if($request->hasFile('photographie')){
         foreach ($request->file('photographie') as $photo) {
@@ -127,6 +132,9 @@ class AnnoncesController extends Controller
       $annonce->titre =  $request->titre;
       $annonce->description = $request->description;
       $annonce->prix = $request->prix;
+      $annonce->couleur =  $request->couleur;
+      $annonce->taille = $request->taille;
+      $annonce->tags = $request->tags;
 
       $annonce->save();
 
@@ -166,5 +174,10 @@ class AnnoncesController extends Controller
       }
       $annonce->delete();
       return redirect('/annonces')->with('success', 'Post Deleted');
+    }
+
+    public function search()
+    {
+      
     }
   }

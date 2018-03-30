@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Support\Facades\Input;
+use App\Annonce;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,3 +49,35 @@ Route::get('/annonces/{annonce}/edit', 'AnnoncesController@edit')->name('annonce
 Route::put('/annonces/{annonce}/update', 'AnnoncesController@update')->name('annonces.update');
 
 Route::put('/annonces/{annonce}/delete', 'AnnoncesController@destroy')->name('annonces.delete');
+
+Route::any('/search',function(){
+    $couleur = Input::get('couleur');
+    $catégorie = Input::get('catégorie');
+    $tags = Input::get('tags');
+    $taille = Input::get('taille');
+
+    $annonce = Annonce::when($couleur,function ($query) use ($couleur) {
+      return $query->where('couleur','LIKE', '%'.$couleur.'%');
+    } )
+      ->When($catégorie, function ($query) use ($catégorie) {
+        return $query->where('catégorie','LIKE', '%'.$catégorie.'%');
+      })
+     ->When($taille, function ($query) use ($taille) {
+       return $query->where('taille','LIKE', '%'.$taille.'%');
+     })
+     ->When($tags, function ($query) use ($tags) {
+       return $query->where('tags', 'LIKE', '%'.$tags.'%');
+     })
+     ->get();
+     if(count($annonce) > 0)
+        return view('/annonces/search')->withDetails($annonce)->withQuery ($couleur);
+    else return view ('/home')->withMessage('No Items found. Try to search again !');
+});
+
+Route::group(['prefix' => 'messages'], function () {
+    Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
+    Route::get('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
+    Route::post('/', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
+    Route::get('{id}', ['as' => 'messages.show', 'uses' => 'MessagesController@show']);
+    Route::put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
+});

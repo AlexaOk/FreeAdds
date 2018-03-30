@@ -1,23 +1,22 @@
-<div class="blog-post">
-  <h2 class="blog-post-title">
-    <a href="/annonces/{{ $annonce->id}}">
-      {{$annonce->titre}}
-    </a>
-  </h2>
-  <p class="blog-post-meta">
-    Posted on : {{ $annonce->created_at->toFormattedDateString()}}
+<tr>
+  <td><h4><a href="/annonces/{{ $annonce->id}}">
+    {{$annonce->titre}}
+  </a></h4></td>
+  <td>{{$annonce->description}}</td>
+  <td>
+     @foreach ($annonce->photographies as $photo)
+      <img   width="30%" height="30%" src="{{ asset('storage/' . $photo->photographie) }}"/>
+    @endforeach
+  </td>
+  <td>
+    {{ ucfirst($annonce->couleur) }}
     <br>
-    Seller : <a href="#">{{"@".$annonce->user->name}}</a>
-  </p>
-
-  {{$annonce->content}}
-  <br>
-  {{$annonce->description}}
-  <br>
-  @foreach ($annonce->photographies as $photo)
-    <img   width="15%" height="15%" src="{{ asset('storage/' . $photo->photographie) }}"/>
-  @endforeach
-  <br>
-  {{$annonce->prix}} €
-
-</div>
+    Size : {{ $annonce->taille}}
+    <br>
+    {{ $annonce->prix}} €
+    <br>
+    Catégorie {{ $annonce->catégorie}} Category
+    <br>
+    Seller : <a href="#">{{ "@".$annonce->user->name}}</a>
+  </td>
+</tr>

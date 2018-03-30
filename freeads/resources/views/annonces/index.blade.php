@@ -11,12 +11,17 @@
         <a class="btn btn-success" href="/annonces/new">Add new Item</a>
         <br>
         <br>
+        <table class="table table-striped">
+          <tbody>
         @foreach ($annonces as $annonce)
 
           @include('annonces.post')
 
         @endforeach
+      </table>
+    </tbody>
       </div>
+
 
       <br>
 

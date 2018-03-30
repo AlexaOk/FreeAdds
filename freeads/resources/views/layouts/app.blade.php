@@ -22,7 +22,7 @@
 </head>
 <body>
   <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel">
       <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
           Free Adds
@@ -37,17 +37,30 @@
 
           </ul>
           <ul class="navbar-nav m-auto">
-            <form>
+            <form class="form-inline" method="POST" action ="{{ url('/search') }}" role="search">
+
+              {{ csrf_field() }}
               <div>
-                <select name="carlist" form="carform">
+                <input type="search" id="tags" name="tags" class="form-control" placeholder="Search on Free Adds">
+                <input type="search" id="couleur" name="couleur" class="form-control" placeholder="Color">
+                <input type="search" id="ville" name="ville" class="form-control" placeholder="Near">
+                <select name="catégorie" class="form-control">
+                  <option value="">Category</option>
                   <option value="Clothes">Clothes</option>
                   <option value="Jewelleries">Jewelleries</option>
                   <option value="Media">Media</option>
                   <option value="Toys">Toys</option>
                   <option value="Lifestyle">Lifestyle</option>
+                  <option value="Other">Other</option>
                 </select>
-                <input type="search" id="maRecherche" name="" placeholder="Search on Free Adds">
-                <button>Search</button>
+                <select name="taille" class="form-control">
+                  <option value="">Size</option>
+                  <option value="XS">XS</option>
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                </select>
+                <button class="form-control">Search</button>
               </div>
             </form>
           </ul>
@@ -80,12 +93,21 @@
 
               </div>
             </li>
+
           @endguest
         </ul>
       </div>
     </div>
   </nav>
-
+  <nav class="navbar navbar-light d-flex justify-content-end" style="background-color: #e3f2fd;">
+    <!-- Navbar content -->
+     <a class="btn btn-sm btn-outline-secondary p-2" href="/messages" type="button">Messages<?php $count = Auth::user()->newThreadsCount(); ?>
+     @if($count > 0)
+         <span class="label label-danger">( {{ $count }} )</span>
+     @endif
+</a>
+      <a class="btn btn-sm btn-outline-secondary p-2" href="/messages/create" type="button">Compose Message</a>
+  </nav>
   <main class="py-4">
     @yield('content')
   </main>
