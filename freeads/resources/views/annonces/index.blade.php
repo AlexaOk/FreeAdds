@@ -9,10 +9,8 @@
             <div class="card-header"><h1>Items</h1></div>
             <div class="card-body">
 
-              @if(!Auth::guest())
-              @if(Auth::user()->id == $annonce->user_id)
+                @if (Auth::check())
         <a class="btn btn-success" href="/annonces/new">Add new Item</a>
-      @endif
       @endif
         <br>
         <br>
