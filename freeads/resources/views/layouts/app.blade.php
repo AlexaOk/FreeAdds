@@ -81,6 +81,9 @@
                   <a class="dropdown-item" href="/annonces">
                     {{ __('Annonces') }}
                   </a>
+                  <a class="dropdown-item" href="/users">
+                    {{ __('Sellers') }}
+                  </a>
                   <a class="dropdown-item" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
                   document.getElementById('logout-form').submit();">
@@ -101,9 +104,11 @@
   </nav>
   <nav class="navbar navbar-light d-flex justify-content-end" style="background-color: #e3f2fd;">
     <!-- Navbar content -->
+    @if (Auth::check())
      <a class="btn btn-sm btn-outline-secondary p-2" href="/messages" type="button">Messages<?php $count = Auth::user()->newThreadsCount(); ?>
      @if($count > 0)
          <span class="label label-danger">( {{ $count }} )</span>
+       @endif
      @endif
 </a>
       <a class="btn btn-sm btn-outline-secondary p-2" href="/messages/create" type="button">Compose Message</a>

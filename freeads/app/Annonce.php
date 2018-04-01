@@ -17,4 +17,12 @@ class Annonce extends Model
   {
     return $this->hasMany(Photographie::class);
   }
+  public function comments()
+  {
+    return $this->hasMany(Comment::class);
+  }
+  public function addComment(Comment $comment)
+{
+  return $this->comments()->save($comment);
+}
 }

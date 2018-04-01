@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Billet;
+use App\User;
 
 use Auth;
-
-use App\User;
 
 use Session;
 
@@ -23,7 +21,9 @@ class UserController extends Controller
   */
   public function index()
   {
-    //
+    $users=User::latest()->paginate(5);
+
+    return view('users.index', compact('users'));
   }
 
   /**
@@ -53,9 +53,9 @@ class UserController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function show($id)
+  public function show(User $user)
   {
-    //
+        return view('users.show', compact('user'));
   }
 
   /**

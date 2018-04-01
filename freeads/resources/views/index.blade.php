@@ -81,6 +81,7 @@
                 <div class="title m-b-md">
                     Free Adds
                 </div>
+                <a class="link" href="/home">Enter</a>
 
             </div>
         </div>

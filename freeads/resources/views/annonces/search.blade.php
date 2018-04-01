@@ -21,7 +21,7 @@
                           <td>{{$annonce->description}}</td>
                           <td>
                              @foreach ($annonce->photographies as $photo)
-                              <img   width="30%" height="30%" src="{{ asset('storage/' . $photo->photographie) }}"/>
+                              <img   height="150px" src="{{ asset('storage/' . $photo->photographie) }}"/>
                             @endforeach
                           </td>
                           <td>
@@ -33,7 +33,7 @@
                             <br>
                              {{ $annonce->catégorie}}'s category
                             <br>
-                            Seller : <a href="#">{{ "@".$annonce->user->name}}</a>
+                            Seller : <a href="/users/{{ $annonce->user->id}}">{{ "@".$annonce->user->name}}</a>
                           </td>
                         </tr>
                       @endforeach

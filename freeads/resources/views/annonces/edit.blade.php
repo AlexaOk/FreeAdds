@@ -109,7 +109,7 @@
             <label for="tags" class="col-md-4 col-form-label text-md-right">{{ __('Tags') }}</label>
 
             <div class="col-md-6">
-              <input id="tags" type="tags" class="form-control{{ $errors->has('tags') ? ' is-invalid' : '' }}" name="tags" value="{{ old('tags') }}" required>
+              <input id="tags" type="tags" class="form-control{{ $errors->has('tags') ? ' is-invalid' : '' }}" name="tags" value="{{ $annonce->tags }}" required>
             </div>
           </div>
 

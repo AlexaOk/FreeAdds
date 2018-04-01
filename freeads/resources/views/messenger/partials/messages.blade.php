@@ -1,13 +1,20 @@
-<div class="media">
-    <a class="pull-left" href="#">
-        <img src="//www.gravatar.com/avatar/{{ md5($message->user->email) }} ?s=64"
-             alt="{{ $message->user->name }}" class="img-circle">
-    </a>
-    <div class="media-body">
-        <h5 class="media-heading">{{ $message->user->name }}</h5>
-        <p>{{ $message->body }}</p>
-        <div class="text-muted">
-            <small>Posted {{ $message->created_at->diffForHumans() }}</small>
-        </div>
-    </div>
+<tbody>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-10">
+            <div class="col-sm-12 blog-main">
+              <div class="card justify-content-center">
+    <div class="card-header">
+<h5 class="media-heading">  <a href="/users/{{ $message->user->id}}">{{ "@".$message->user->name }}</a></h5>
 </div>
+<p>{{ $message->body }}</p>
+
+<div class="text-muted">
+  <small>Posted {{ $message->created_at->diffForHumans() }}</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</tbody>

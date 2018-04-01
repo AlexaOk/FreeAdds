@@ -5,7 +5,7 @@
   <td>{{$annonce->description}}</td>
   <td>
      @foreach ($annonce->photographies as $photo)
-      <img   width="30%" height="30%" src="{{ asset('storage/' . $photo->photographie) }}"/>
+      <img   height="130px" src="{{ asset('storage/' . $photo->photographie) }}"/>
     @endforeach
   </td>
   <td>
@@ -15,8 +15,10 @@
     <br>
     {{ $annonce->prix}} €
     <br>
-    Catégorie {{ $annonce->catégorie}} Category
+    {{ $annonce->catégorie}}
     <br>
-    Seller : <a href="#">{{ "@".$annonce->user->name}}</a>
+    Seller : <a href="/users/{{ $annonce->user->id}}">{{ "@".$annonce->user->name}}</a>
+    <br>
+      <a href="/annonces/{{ $annonce->id }}">{{$annonce->comments->count() }} comments</a>
   </td>
 </tr>

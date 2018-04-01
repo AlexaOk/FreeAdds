@@ -178,6 +178,6 @@ class AnnoncesController extends Controller
 
     public function search()
     {
-      
+
     }
   }
