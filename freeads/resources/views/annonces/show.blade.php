@@ -21,6 +21,7 @@
               <h4 class="d-flex justify-content-end">{{ $annonce->prix }} €</h4>
               <br>
               <h4 class="d-flex justify-content-end">{{ $annonce->couleur }}</h4>
+              <p class="d-flex justify-content-end">Shipping from <br> {{ $annonce->ville}}</p>
               @foreach ($annonce->photographies as $photo)
                   <img height="200px" src="{{ asset('storage/' . $photo->photographie) }}">
               @endforeach

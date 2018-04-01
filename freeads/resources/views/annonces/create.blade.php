@@ -93,6 +93,20 @@
               </div>
 
               <div class="form-group row">
+                <label for="ville" class="col-md-4 col-form-label text-md-right">{{ __('Ville') }}</label>
+
+                <div class="col-md-6">
+                  <input id="ville" type="description" class="form-control{{ $errors->has('ville') ? ' is-invalid' : '' }}" name="ville" value="">
+
+                  @if ($errors->has('ville'))
+                    <span class="invalid-feedback">
+                      <strong>{{ $errors->first('ville') }}</strong>
+                    </span>
+                  @endif
+                </div>
+              </div>
+
+              <div class="form-group row">
                 <label for="photographie" class="col-md-4 col-form-label text-md-right">{{ __('Photographie') }}</label>
 
                 <div class="col-md-6">

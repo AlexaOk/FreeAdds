@@ -55,6 +55,7 @@ Route::any('/search',function(){
     $catégorie = Input::get('catégorie');
     $tags = Input::get('tags');
     $taille = Input::get('taille');
+    $ville = Input::get('ville');
 
     $annonce = Annonce::when($couleur,function ($query) use ($couleur) {
       return $query->where('couleur','LIKE', '%'.$couleur.'%');
@@ -67,6 +68,9 @@ Route::any('/search',function(){
      })
      ->When($tags, function ($query) use ($tags) {
        return $query->where('tags', 'LIKE', '%'.$tags.'%');
+     })
+     ->When($ville, function ($query) use ($ville) {
+       return $query->where('ville', 'LIKE', '%'.$ville.'%');
      })
      ->get();
      if(count($annonce) > 0)

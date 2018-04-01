@@ -1,10 +1,17 @@
 <tr>
   <td><h4><a href="/annonces/{{ $annonce->id}}">
     {{$annonce->titre}}
+    <td><p class="blog-post-meta">
+
+    Added on {{ $annonce->created_at->toFormattedDateString()}}
+
+  </p></td>
   </a></h4></td>
+
   <td>{{$annonce->description}}</td>
   <td>
      @foreach ($annonce->photographies as $photo)
+
       <img   height="130px" src="{{ asset('storage/' . $photo->photographie) }}"/>
     @endforeach
   </td>

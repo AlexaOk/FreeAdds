@@ -31,7 +31,7 @@
                             <br>
                             {{ $annonce->prix}} €
                             <br>
-                             {{ $annonce->catégorie}}'s category
+                             {{ $annonce->catégorie}}
                             <br>
                             Seller : <a href="/users/{{ $annonce->user->id}}">{{ "@".$annonce->user->name}}</a>
                           </td>

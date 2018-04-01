@@ -55,6 +55,7 @@ class AnnoncesController extends Controller
       'couleur' => $request->couleur,
       'taille' => $request->taille,
       'tags' => $request->tags,
+      'ville' =>$request->ville,
       ]);
 
       if($request->hasFile('photographie')){
@@ -135,6 +136,7 @@ class AnnoncesController extends Controller
       $annonce->couleur =  $request->couleur;
       $annonce->taille = $request->taille;
       $annonce->tags = $request->tags;
+      $annonce->ville = $request->ville;
 
       $annonce->save();
 
