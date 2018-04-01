@@ -108,10 +108,11 @@
      <a class="btn btn-sm btn-outline-secondary p-2" href="/messages" type="button">Messages<?php $count = Auth::user()->newThreadsCount(); ?>
      @if($count > 0)
          <span class="label label-danger">( {{ $count }} )</span>
-       @endif
-     @endif
+
 </a>
       <a class="btn btn-sm btn-outline-secondary p-2" href="/messages/create" type="button">Compose Message</a>
+    @endif
+  @endif
   </nav>
   <main class="py-4">
     @yield('content')

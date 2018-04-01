@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 class MessagesController extends Controller
 {
+
+  public function __construct()
+{
+  $this->middleware('auth', ['except' =>['index', 'show']]);
+}
   /**
   * Show all of the message threads to the user.
   *

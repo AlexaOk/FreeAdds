@@ -66,10 +66,9 @@
     @endforeach
 
 </div>
-
+  @if (Auth::check())
 <div class="card">
   <div class="card-header">{{ __('Add a comment') }}</div>
-
   <div class="card-body">
       <form method="POST" action="{{ route('annonces.comment', $annonce->id)}}">
         {{ method_field('PATCH') }}
@@ -93,7 +92,7 @@
               </div>
           </div>
       </form>
-
+@endif
       @include ('layouts.errors')
 
   </div>

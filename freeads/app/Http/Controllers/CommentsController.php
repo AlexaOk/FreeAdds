@@ -14,9 +14,9 @@ class CommentsController extends Controller
 {
 
   public function __construct()
-  {
-    //$this->middleware('commentateur', ['except'=>['index', 'show']]);
-  }
+{
+  $this->middleware('auth', ['except' =>['index', 'show']]);
+}
   /**
   * Display a listing of the resource.
   *
