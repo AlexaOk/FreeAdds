@@ -55,7 +55,7 @@
     @foreach ($annonce->comments as $comment)
       <div class="card-body">
 
-          <a href="/users/{{ $comment->user->id}}">{{"@".$annonce->user->name}}</a>
+          <a href="/users/{{ $comment->user->id}}">{{"@".$comment->user->name}}</a>
 
           <strong>
               {{ $comment->created_at->diffForHumans()}}: &nbsp;
